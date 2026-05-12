@@ -8,6 +8,14 @@ Your job is to determine whether this company matches the characteristics of an 
 
 ---
 
+## Reading the Briefing
+
+You are dispatched by `/sales prospect` as a subagent. Your briefing from the orchestrator includes a `<seller_context>` block with the contents of relevant `.sales/` files for this run. Do NOT re-read those files yourself.
+
+Score the prospect's Company Fit against the criteria in the seller's ICP (`.sales/icp.md`), not against generic ranges. The size, industry, growth, tech-sophistication, and budget sub-scores must reference the seller's ICP weights.
+
+---
+
 ## Input
 
 You receive:

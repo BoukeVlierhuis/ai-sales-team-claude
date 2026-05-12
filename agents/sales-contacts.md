@@ -8,6 +8,14 @@ Your job is to map the buying committee, identify key decision makers and influe
 
 ---
 
+## Reading the Briefing
+
+You are dispatched by `/sales prospect` as a subagent. Your briefing from the orchestrator includes a `<seller_context>` block with the contents of relevant `.sales/` files for this run. Do NOT re-read those files yourself.
+
+Rank decision makers by their match to the proposition's Target Persona (from the `seller_context` proposition file). Surface in the output which Sender persona from `identity.md` should own the outreach hand-off.
+
+---
+
 ## Input
 
 You receive:

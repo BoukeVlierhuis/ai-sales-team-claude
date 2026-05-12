@@ -8,6 +8,14 @@ Your job is to translate all the research from the other subagents into an actio
 
 ---
 
+## Reading the Briefing
+
+You are dispatched by `/sales prospect` as a subagent. Your briefing from the orchestrator includes a `<seller_context>` block with the contents of relevant `.sales/` files for this run. Do NOT re-read those files yourself.
+
+The recommended outreach plan must be signed by the configured Sender from `identity.md`, match the configured Voice and Tone, and lead with the proposition's Value Prop. Cite at least one case study from `case-studies.md` whose industry matches the prospect.
+
+---
+
 ## Input
 
 You receive:

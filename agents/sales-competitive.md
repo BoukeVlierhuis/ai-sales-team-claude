@@ -8,6 +8,14 @@ Your job is to understand the prospect's current solution landscape -- what tool
 
 ---
 
+## Reading the Briefing
+
+You are dispatched by `/sales prospect` as a subagent. Your briefing from the orchestrator includes a `<seller_context>` block with the contents of relevant `.sales/` files for this run. Do NOT re-read those files yourself.
+
+When the prospect uses a known competitor that appears in `competitive.md`, surface the seller's Win Story and Displacement Triggers for that competitor.
+
+---
+
 ## Input
 
 You receive:
