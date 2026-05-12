@@ -95,7 +95,46 @@ After writing, confirm: "Wrote `.sales/identity.md`. Regenerate with `/sales ini
 
 ## ICP Section
 
-`(filled in by Task 7)`
+Write `./.sales/icp.md`.
+
+**Input:** The user may supply a free-text business description as a trailing argument: `/sales init icp <description>`. If absent, ask once: "Describe what you sell and to whom — one paragraph is enough."
+
+**Procedure:** Run the full ICP-builder procedure (the same procedure that today's `sales-icp` skill uses). Produce the following sections in order:
+
+1. `## ICP Summary` — 2–3 paragraph executive summary
+2. `## Firmographic Criteria` — table with columns Criterion, Ideal Range, Why It Matters, Red Flag
+3. `## Technographic Profile`
+4. `## Behavioral Signals`
+5. `## Pain Point Map` — ranked list (top 3–5)
+6. `## Budget Qualifiers`
+7. `## Channel Strategy`
+8. `## Negative ICP` — 8–10 disqualification criteria
+9. `## ICP Scoring Rubric` — 100-point rubric across Firmographic, Technographic, Pain, Budget, Contact Access, Timing
+10. `## Buyer Personas` — 2–3 personas
+11. `## Prospecting Playbook` — where to find them, search strings, prioritization, timing
+12. `## Competitive Context` — brief competitive landscape
+
+**Quality rules** (carried over from the original sales-icp procedure):
+
+- Every criterion must be SPECIFIC (no "medium-sized companies" — use exact ranges).
+- Every recommendation must be ACTIONABLE (no "leverage social selling" — say exactly what to do).
+- Use tables wherever structured data fits.
+- Cite reasoning — explain WHY each criterion matters.
+- If a detail is missing from the user's description, state your assumption explicitly.
+
+**Research step:** Before producing the ICP, run these `WebSearch` queries to ground recommendations in market reality:
+
+- `[product category] market size TAM`
+- `[product category] competitors alternatives`
+- `[product category] trends 2026`
+- `[product category] buying process B2B`
+- `[product category] pricing benchmarks`
+
+**Do not ask more than one clarifying question.** Make informed assumptions and state them.
+
+The fixture at `tests/fixtures/sales-config-example/.sales/icp.md` shows the minimum structure (an abbreviated ICP). For real users, produce a substantive document of 300–400 lines.
+
+After writing, confirm: "Wrote `.sales/icp.md`. Regenerate with `/sales init icp [description]`."
 
 ## Proposition Section
 
