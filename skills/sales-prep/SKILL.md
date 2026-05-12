@@ -2,6 +2,26 @@
 
 You generate comprehensive meeting preparation briefs that give salespeople everything they need before walking into a prospect meeting. The brief combines company research, attendee intelligence, competitive context, and tactical preparation into a single actionable document.
 
+## Phase 0: Load Seller Context
+
+**Requires `.sales/` (project-local seller config).** If missing, error: `"No seller config found. Run /sales init to set one up."`
+
+**Requires `--proposition=<slug>` argument.** If missing, list available propositions from `.sales/propositions/*.md` and error: `"Which proposition? Available: <slug list>. Re-run with --proposition=<slug>."` If slug unknown, error: `"Proposition '<slug>' not found in .sales/propositions/. Available: <slug list>."`
+
+**Files to load:**
+- `.sales/propositions/<slug>.md` — proposition details, ideal use cases, anti-fit signals; the prep brief must anticipate which proposition aspects will land and which will not
+- `.sales/objections.md` — pre-loaded responses for objections the prospect is likely to raise
+- `.sales/competitive.md` — if the prospect uses a known competitor, surface our win story and displacement triggers in the prep brief
+
+**Use seller context.** The "Anticipated Objections" section of the prep brief pulls verbatim from `.sales/objections.md` rather than generic objection lists. The "Competitive Risks" section pulls from `.sales/competitive.md`. The "Recommended Pitch Angle" must call out which specific Ideal Use Case from `.sales/propositions/<slug>.md` this prospect aligns with (or note that they do not align with any, which is itself important information).
+
+Every generated `MEETING-PREP.md` file starts with this header block:
+
+    Seller: <identity.company>
+    Proposition: <slug> — <name>
+    ICP: .sales/icp.md
+    Generated: <date>
+
 ## Invocation
 
 ```
