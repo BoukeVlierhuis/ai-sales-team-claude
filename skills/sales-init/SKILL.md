@@ -269,7 +269,35 @@ After writing, confirm: "Wrote `.sales/case-studies.md`. Regenerate with `/sales
 
 ## Competitive Section
 
-`(filled in by Task 11)`
+Write `./.sales/competitive.md`. Required H2 sections: `## Positioning Statement`, `## Competitors`.
+
+Ask the user:
+
+1. **Positioning Statement** — "In one sentence, how do you position against the broader market?"
+2. **Competitors** — "List 3–5 competitors you most often encounter in deals." Loop for each:
+    - Their target segment
+    - Their key differentiator
+    - Our win story (one sentence on how we win against them)
+    - Our loss story (one sentence on when they win)
+    - Displacement triggers (what makes a customer switch from them to us)
+
+Write the file using this structure:
+
+    # Competitive
+
+    ## Positioning Statement
+    <one sentence>
+
+    ## Competitors
+
+    ### <Competitor Name>
+    - **Their target:** <description>
+    - **Their differentiator:** <description>
+    - **Our win story:** "<sentence>"
+    - **Our loss story:** <sentence>
+    - **Displacement triggers:** <description>
+
+After writing, confirm: "Wrote `.sales/competitive.md`. Regenerate with `/sales init competitive`."
 
 ## Objections Section
 
