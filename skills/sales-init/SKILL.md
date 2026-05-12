@@ -200,7 +200,40 @@ In full-setup mode, after writing one proposition ask: "Add another proposition?
 
 ## Pricing Section
 
-`(filled in by Task 9)`
+Write `./.sales/pricing.md`. Required H2 sections: `## Tiers`, `## Deal Size Benchmarks`, `## Discount Rules`, `## Contract Terms`.
+
+Ask the user:
+
+1. **Tiers** — "List your published pricing tiers. For each: name, price (or 'Custom'), and a one-line description of what's included."
+2. **Deal Size Benchmarks** — "Typical ACV? Minimum viable deal? At what dollar amount does a deal cross into enterprise?"
+3. **Discount Rules** — "When do you discount and by how much? What requires approval?"
+4. **Contract Terms** — "Standard term length, renewal behavior, cancellation policy."
+
+Write the file using this exact structure:
+
+    # Pricing
+
+    ## Tiers
+
+    | Tier | Price | Includes |
+    |---|---|---|
+    | <tier> | <price> | <description> |
+
+    ## Deal Size Benchmarks
+    - Typical ACV: <amount>
+    - Minimum viable deal: <amount>
+    - Enterprise threshold: <amount>
+
+    ## Discount Rules
+    - <rule>
+    - <rule>
+
+    ## Contract Terms
+    - Standard term: <length>
+    - Renewal: <behavior>
+    - Cancellation: <policy>
+
+After writing, confirm: "Wrote `.sales/pricing.md`. Regenerate with `/sales init pricing`."
 
 ## Case Studies Section
 
