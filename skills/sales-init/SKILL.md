@@ -327,7 +327,49 @@ After writing, confirm: "Wrote `.sales/objections.md`. Regenerate with `/sales i
 
 ## Web Seeding (`--from-url`)
 
-`(filled in by Task 13)`
+When the user passes `--from-url=<url>`, run a pre-research phase before any questions. The goal: prefill candidate answers so the user reviews/edits instead of typing from scratch.
+
+### Pre-research procedure
+
+1. **Fetch pages.** Use `WebFetch` to retrieve the following from the supplied URL (skip any that 404):
+    - `/` (homepage)
+    - `/about`, `/about-us`, `/company`
+    - `/team`, `/leadership`
+    - `/pricing`, `/plans`
+    - `/customers`, `/case-studies`
+    - `/blog` (first page)
+    - `/careers`
+    - `/contact`
+
+2. **Extract candidate values per section:**
+
+    | Section | What to extract | From |
+    |---|---|---|
+    | identity.company | Legal name + DBA | Homepage footer, About page, /legal if visible |
+    | identity.senders | Names + titles + emails | Team/leadership pages |
+    | identity.voice_and_tone | Inferred adjectives | Homepage and blog copy — analyze tone |
+    | identity.company_bio | One-paragraph description | About page first paragraph |
+    | propositions | Product names + value props | Homepage product sections, product pages |
+    | pricing.tiers | Tier names + prices + inclusions | /pricing page |
+    | case-studies | Customer names + metrics + quotes | /customers, /case-studies |
+    | competitive.positioning | Inferred positioning statement | Homepage hero copy |
+    | competitive.competitors | Comparison pages if any | /vs-* pages or comparison content |
+    | icp | Industries served + customer size signals | Case studies, customer logos |
+    | objections | (cannot be reliably extracted) | — fall back to asking |
+
+3. **Present pre-filled drafts.** For each section, show the extracted draft and ask: "Here's what I extracted: [draft]. (A)ccept as-is, (E)dit, (S)kip, or (B)lank to fill from scratch?" Process each section using the same write procedure described above, but starting from the candidate values instead of an empty form.
+
+4. **Fall back to blank questions** for any field where extraction failed or returned low-confidence data. Mark uncertain extractions with `<!-- low-confidence: review -->` in the draft so the user sees what to scrutinize.
+
+### Confidence rules
+
+- Mark extractions as low-confidence when:
+    - The source page returned a non-200 status
+    - The page contains no clear matching content (e.g., no `/pricing` page found)
+    - The extracted text is generic marketing copy without specifics
+- Mark as high-confidence when the source page exists, contains structured content (table, list, named entities), and the extraction is verbatim or near-verbatim.
+
+The web seeding behavior changes ONLY the prompts inside the init procedure. It does not change the schema of any file or which sections are required.
 
 ---
 
