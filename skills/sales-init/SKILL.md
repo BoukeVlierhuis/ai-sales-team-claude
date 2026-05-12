@@ -57,7 +57,41 @@ Run each section procedure below in order. After each section, confirm to the us
 
 ## Identity Section
 
-`(filled in by Task 6)`
+Write `./.sales/identity.md`. Required H2 sections in order: `## Company`, `## Senders`, `## Voice and Tone`, `## Signature`, `## Company Bio`.
+
+Ask the user for each field. Do not move to the next question until the current one is answered. Ask one question at a time.
+
+1. **Company** — "What is the legal name of your company? If you operate under a different DBA, list both."
+2. **Senders** — "List one or more sender personas (the people whose names will appear on outreach). For each: name, title, email, optional LinkedIn URL. You can add more later."
+3. **Voice and Tone** — "Pick three adjectives that describe how you want sales communication to sound (e.g., 'direct, technical, warm'). Then add one or two sentences explaining what good sounds like."
+4. **Signature** — "Paste the verbatim email signature block you want appended to outreach."
+5. **Company Bio** — "Write one paragraph about the company for use in proposals and outreach context. Skip jargon — facts and outcomes only."
+
+When all five are collected, write the file using this exact structure:
+
+    # Identity
+
+    ## Company
+    **Legal name:** <name>
+    **DBA:** <dba or "Same as legal name">
+
+    ## Senders
+    - Name: <name>
+      Title: <title>
+      Email: <email>
+      LinkedIn: <url or "">
+
+    ## Voice and Tone
+    **Adjectives:** <a>, <b>, <c>.
+    <one-to-two-sentence description>
+
+    ## Signature
+    <signature block, verbatim>
+
+    ## Company Bio
+    <one paragraph>
+
+After writing, confirm: "Wrote `.sales/identity.md`. Regenerate with `/sales init identity`."
 
 ## ICP Section
 
