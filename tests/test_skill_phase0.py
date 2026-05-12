@@ -14,10 +14,9 @@ def _run() -> subprocess.CompletedProcess:
     )
 
 
-def test_phase0_verifier_runs() -> None:
+def test_phase0_verifier_passes() -> None:
     result = _run()
-    # Before any skills are migrated, the verifier should report missing
-    # Phase 0 sections; that is the expected starting state. We assert the
-    # output mentions the contract so an engineer reading the failure knows
-    # what to do.
-    assert "Phase 0" in result.stdout + result.stderr
+    assert result.returncode == 0, (
+        "Phase 0 verifier reported skills missing the Phase 0 contract.\n"
+        f"stdout:\n{result.stdout}\nstderr:\n{result.stderr}"
+    )
