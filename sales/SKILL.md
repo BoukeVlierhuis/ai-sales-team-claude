@@ -6,27 +6,49 @@ You are a comprehensive AI sales intelligence and outreach system for Claude Cod
 
 | Command | Description | Output |
 |---------|-------------|--------|
-| `/sales prospect <url>` | Full prospect audit (5 parallel agents) | PROSPECT-ANALYSIS.md |
-| `/sales quick <url>` | 60-second prospect snapshot | Terminal output |
-| `/sales research <url>` | Company research & firmographics | COMPANY-RESEARCH.md |
-| `/sales qualify <url>` | Lead qualification (BANT/MEDDIC) | LEAD-QUALIFICATION.md |
-| `/sales contacts <url>` | Decision maker identification | DECISION-MAKERS.md |
-| `/sales outreach <prospect>` | Cold outreach email sequence | OUTREACH-SEQUENCE.md |
-| `/sales followup <prospect>` | Follow-up email sequence | FOLLOWUP-SEQUENCE.md |
-| `/sales prep <url>` | Meeting preparation brief | MEETING-PREP.md |
-| `/sales proposal <client>` | Client proposal generator | CLIENT-PROPOSAL.md |
-| `/sales objections <topic>` | Objection handling playbook | OBJECTION-PLAYBOOK.md |
-| `/sales icp <description>` | Ideal Customer Profile builder | IDEAL-CUSTOMER-PROFILE.md |
+| `/sales init [section]` | Scaffold/regenerate seller config in `./.sales/` | `.sales/*.md` |
+| `/sales init --from-url=<url>` | Seed seller config from a corporate website | `.sales/*.md` |
+| `/sales prospect <url> --proposition=<slug>` | Full prospect audit (5 parallel agents) | PROSPECT-ANALYSIS.md |
+| `/sales quick <url>` | 60-second prospect snapshot (no seller config required) | Terminal output |
+| `/sales research <url>` | Company research & firmographics (no seller config required) | COMPANY-RESEARCH.md |
+| `/sales qualify <url> --proposition=<slug>` | Lead qualification (BANT/MEDDIC) against your ICP | LEAD-QUALIFICATION.md |
+| `/sales contacts <url> --proposition=<slug>` | Decision maker identification | DECISION-MAKERS.md |
+| `/sales outreach <prospect> --proposition=<slug>` | Cold outreach email sequence | OUTREACH-SEQUENCE.md |
+| `/sales followup <prospect> --proposition=<slug>` | Follow-up email sequence | FOLLOWUP-SEQUENCE.md |
+| `/sales prep <url> --proposition=<slug>` | Meeting preparation brief | MEETING-PREP.md |
+| `/sales proposal <client> --proposition=<slug>` | Client proposal generator | CLIENT-PROPOSAL.md |
+| `/sales objections <topic> --proposition=<slug>` | Objection handling playbook | OBJECTION-PLAYBOOK.md |
+| `/sales icp [description]` | Back-compat alias → `/sales init icp` | `.sales/icp.md` |
 | `/sales competitors <url>` | Competitive intelligence | COMPETITIVE-INTEL.md |
 | `/sales report` | Sales pipeline report (Markdown) | SALES-REPORT.md |
 | `/sales report-pdf` | Sales pipeline report (PDF) | SALES-REPORT-*.pdf |
+
+## Seller Config (`.sales/`)
+
+Every command marked with `--proposition=<slug>` in the table above requires a project-local seller config at `./.sales/`. If that folder is missing, the skill must error with:
+
+> "No seller config found. Run `/sales init` to set one up."
+
+If `--proposition=<slug>` is missing or the slug is not present in `./.sales/propositions/`, the skill must error with one of:
+
+> "Which proposition? Available: <slug list>. Re-run with `--proposition=<slug>`."
+> "Proposition '<slug>' not found in `.sales/propositions/`. Available: <slug list>."
+
+Commands NOT requiring seller config: `/sales init`, `/sales quick`, `/sales research`, `/sales competitors`, `/sales icp` (which is itself the alias to `/sales init icp`). The `report` and `report-pdf` commands require `.sales/identity.md` for branding but do not require a `--proposition` flag.
+
+The example fixture at `tests/fixtures/sales-config-example/.sales/` shows the exact shape of every file. Skills must reference it when uncertain.
+
+---
 
 ## Routing Logic
 
 When the user invokes `/sales <command>`, route to the appropriate sub-skill:
 
-### Full Prospect Analysis (`/sales prospect <url>`)
-This is the flagship command. It launches **5 parallel subagents** to analyze a prospect simultaneously:
+### Seller Config Setup (`/sales init`)
+Route to `skills/sales-init/SKILL.md`. Handles full setup, per-section regeneration, and `--from-url` seeding.
+
+### Full Prospect Analysis (`/sales prospect <url> --proposition=<slug>`)
+This is the flagship command. After loading seller context (all six base files plus the selected proposition), it launches **5 parallel subagents** to analyze a prospect simultaneously, passing the loaded seller context as part of the discovery briefing to each:
 
 1. **sales-company** agent → Company research, firmographics, growth signals, tech stack
 2. **sales-contacts** agent → Decision maker identification, org mapping, personalization anchors
@@ -62,7 +84,7 @@ Fast 60-second assessment. Do NOT launch subagents. Instead:
 4. Keep output under 30 lines
 
 ### Individual Commands
-For all other commands (`/sales research`, `/sales qualify`, etc.), route to the corresponding sub-skill in `skills/sales-<command>/SKILL.md`.
+For all other commands (`/sales research`, `/sales qualify`, etc.), route to the corresponding sub-skill in `skills/sales-<command>/SKILL.md`. Each sub-skill is responsible for enforcing its own `.sales/` and `--proposition` requirements at Phase 0 of its procedure. The prospect score uses the weights defined in `.sales/icp.md`'s scoring rubric, not generic defaults.
 
 ## Business Context Detection
 
