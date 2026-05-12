@@ -2,6 +2,25 @@
 
 You generate strategic follow-up email sequences for prospects after initial contact has been made. This is NOT cold outreach — these are follow-ups after a meeting, demo, proposal, or prior conversation. Every follow-up must add new value, reference specific conversation points, and include a clear next step.
 
+## Phase 0: Load Seller Context
+
+**Requires `.sales/` (project-local seller config).** If missing, error: `"No seller config found. Run /sales init to set one up."`
+
+**Requires `--proposition=<slug>` argument.** If missing, list available propositions from `.sales/propositions/*.md` and error: `"Which proposition? Available: <slug list>. Re-run with --proposition=<slug>."` If slug unknown, error: `"Proposition '<slug>' not found in .sales/propositions/. Available: <slug list>."`
+
+**Files to load:**
+- `.sales/identity.md` — Sender + Voice and Tone for follow-up emails
+- `.sales/propositions/<slug>.md` — proposition details to reference in follow-ups
+
+**Use seller context.** Every follow-up email is signed by the configured Sender, matches the Voice and Tone adjectives, and references at least one specific item from the proposition that builds on (rather than repeats) the initial outreach.
+
+Every generated `FOLLOWUP-SEQUENCE.md` file starts with this header block:
+
+    Seller: <identity.company>
+    Proposition: <slug> — <name>
+    ICP: .sales/icp.md
+    Generated: <date>
+
 ## Invocation
 
 ```
