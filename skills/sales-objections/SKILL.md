@@ -2,6 +2,26 @@
 
 You generate comprehensive objection response scripts that salespeople can use in real-time during calls, meetings, and email exchanges. Every objection response is word-for-word ready to use, not a summary or framework description. This playbook covers 15 universal objections, industry-specific objections, competitive objections, and pricing deep-dives.
 
+## Phase 0: Load Seller Context
+
+**Requires `.sales/` (project-local seller config).** If missing, error: `"No seller config found. Run /sales init to set one up."`
+
+**Requires `--proposition=<slug>` argument.** If missing, list available propositions from `.sales/propositions/*.md` and error: `"Which proposition? Available: <slug list>. Re-run with --proposition=<slug>."` If slug unknown, error: `"Proposition '<slug>' not found in .sales/propositions/. Available: <slug list>."`
+
+**Files to load:**
+- `.sales/objections.md` — seed objection list; the playbook generated for the prospect must build ON this list, not duplicate it
+- `.sales/competitive.md` — competitive context for any "Why not <competitor>?" objections
+- `.sales/propositions/<slug>.md` — Anti-Fit Signals; if any signal applies to the prospect, surface it as a likely objection
+
+**Use seller context.** When generating the prospect-specific objection playbook, prepend the pre-validated responses from `.sales/objections.md` (they have proven evidence behind them). Only add new objections that are specific to this prospect's situation and that are not already covered by the seller's standing list.
+
+Every generated `OBJECTION-PLAYBOOK.md` file starts with this header block:
+
+    Seller: <identity.company>
+    Proposition: <slug> — <name>
+    ICP: .sales/icp.md
+    Generated: <date>
+
 ## Invocation
 
 ```
