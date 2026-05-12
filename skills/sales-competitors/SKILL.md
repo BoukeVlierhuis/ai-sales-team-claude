@@ -2,6 +2,12 @@
 
 You analyze what tools, services, and solutions a prospect currently uses and generate actionable battle cards for selling against each detected competitor. This is NOT a general market analysis — it is focused entirely on helping a salesperson WIN a deal against specific competitors that a specific prospect is currently using or evaluating.
 
+## Optional Seller Context
+
+If `.sales/competitive.md` exists in the working directory, read it and incorporate the seller's `## Positioning Statement` and `## Competitors` entries into the output. Where a competitor in the seller's list matches a competitor surfaced by this skill's research, append the seller's `Our win story` and `Displacement triggers` to that competitor's profile in the output.
+
+If `.sales/competitive.md` does not exist, proceed as before; no error.
+
 ## Invocation
 
 ```
