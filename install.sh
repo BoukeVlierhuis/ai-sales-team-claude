@@ -1,7 +1,7 @@
 #!/bin/bash
 # ============================================================================
 # AI Sales Team — Claude Code Skills Installer
-# 14 Skills · 5 Agents · 4 Scripts · PDF
+# 15 Skills · 5 Agents · 4 Scripts · PDF
 # ============================================================================
 set -e
 
@@ -17,7 +17,7 @@ echo ""
 echo -e "${BLUE}╔══════════════════════════════════════════════════════════════╗${NC}"
 echo -e "${BLUE}║                                                              ║${NC}"
 echo -e "${BLUE}║${NC}   ${CYAN}AI Sales Team — Claude Code Skills${NC}                        ${BLUE}║${NC}"
-echo -e "${BLUE}║${NC}   ${GREEN}14 Skills · 5 Agents · 4 Scripts · PDF${NC}                    ${BLUE}║${NC}"
+echo -e "${BLUE}║${NC}   ${GREEN}15 Skills · 5 Agents · 4 Scripts · PDF${NC}                    ${BLUE}║${NC}"
 echo -e "${BLUE}║                                                              ║${NC}"
 echo -e "${BLUE}╚══════════════════════════════════════════════════════════════╝${NC}"
 echo ""
@@ -96,6 +96,7 @@ fi
 # Install 13 sub-skills
 # ---------------------------------------------------------------------------
 SKILLS=(
+    sales-init
     sales-prospect
     sales-research
     sales-qualify
