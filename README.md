@@ -64,6 +64,26 @@ cd ai-sales-team-claude
 pip install -r requirements.txt
 ```
 
+### First-Time Setup — Scaffold Your Seller Config
+
+```bash
+# 1. Scaffold your seller config (interactive)
+/sales init
+
+# Optional: seed from your corporate website
+/sales init --from-url=https://yourcompany.example
+
+# 2. Run a full prospect analysis against one of your propositions
+/sales prospect https://prospect.example --proposition=<your-slug>
+
+# 3. Generate cold outreach for the prospect
+/sales outreach https://prospect.example --proposition=<your-slug>
+```
+
+The `--proposition=<slug>` flag is **required** for any command that personalizes output to a specific product or service in your portfolio. List available propositions with `ls .sales/propositions/`.
+
+A complete worked example lives at [`tests/fixtures/sales-config-example/.sales/`](tests/fixtures/sales-config-example/.sales) — a fictional company called "Lighthouse Analytics" with two propositions. Use it as a reference when building your own.
+
 <details>
 <summary><strong>What the installer does</strong></summary>
 
@@ -119,17 +139,19 @@ Installing templates...
 
 | Command | Description | Output |
 |:--------|:------------|:-------|
-| `/sales prospect <url>` | Full prospect audit — **5 parallel agents** | `PROSPECT-ANALYSIS.md` |
-| `/sales quick <url>` | 60-second prospect snapshot | Terminal output |
-| `/sales research <url>` | Company research & firmographics | `COMPANY-RESEARCH.md` |
-| `/sales qualify <url>` | BANT + MEDDIC lead scoring | `LEAD-QUALIFICATION.md` |
-| `/sales contacts <url>` | Decision maker identification | `DECISION-MAKERS.md` |
-| `/sales outreach <prospect>` | Cold outreach email sequence | `OUTREACH-SEQUENCE.md` |
-| `/sales followup <prospect>` | Follow-up email sequence | `FOLLOWUP-SEQUENCE.md` |
-| `/sales prep <url>` | Meeting preparation brief | `MEETING-PREP.md` |
-| `/sales proposal <client>` | Client proposal generator | `CLIENT-PROPOSAL.md` |
-| `/sales objections <topic>` | Objection handling playbook | `OBJECTION-PLAYBOOK.md` |
-| `/sales icp <description>` | Ideal Customer Profile builder | `IDEAL-CUSTOMER-PROFILE.md` |
+| `/sales init [section]` | Scaffold/regenerate seller config in `./.sales/` | `.sales/*.md` |
+| `/sales init --from-url=<url>` | Seed seller config from a corporate website | `.sales/*.md` |
+| `/sales prospect <url> --proposition=<slug>` | Full prospect audit — **5 parallel agents** | `PROSPECT-ANALYSIS.md` |
+| `/sales quick <url>` | 60-second prospect snapshot (no seller config required) | Terminal output |
+| `/sales research <url>` | Company research & firmographics (no seller config required) | `COMPANY-RESEARCH.md` |
+| `/sales qualify <url> --proposition=<slug>` | BANT + MEDDIC lead scoring against your ICP | `LEAD-QUALIFICATION.md` |
+| `/sales contacts <url> --proposition=<slug>` | Decision maker identification | `DECISION-MAKERS.md` |
+| `/sales outreach <prospect> --proposition=<slug>` | Cold outreach email sequence | `OUTREACH-SEQUENCE.md` |
+| `/sales followup <prospect> --proposition=<slug>` | Follow-up email sequence | `FOLLOWUP-SEQUENCE.md` |
+| `/sales prep <url> --proposition=<slug>` | Meeting preparation brief | `MEETING-PREP.md` |
+| `/sales proposal <client> --proposition=<slug>` | Client proposal generator | `CLIENT-PROPOSAL.md` |
+| `/sales objections <topic> --proposition=<slug>` | Objection handling playbook | `OBJECTION-PLAYBOOK.md` |
+| `/sales icp [description]` | Back-compat alias → `/sales init icp` | `.sales/icp.md` |
 | `/sales competitors <url>` | Competitive intelligence | `COMPETITIVE-INTEL.md` |
 | `/sales report` | Pipeline report (Markdown) | `SALES-REPORT.md` |
 | `/sales report-pdf` | Pipeline report (PDF) | `SALES-REPORT-*.pdf` |
