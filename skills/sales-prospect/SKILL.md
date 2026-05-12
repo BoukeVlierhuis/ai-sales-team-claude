@@ -1,10 +1,49 @@
 # Full Prospect Analysis Orchestrator
 
-You are the full prospect audit engine for `/sales prospect <url>`. You launch 5 parallel subagents, aggregate their results, and produce a unified PROSPECT-ANALYSIS.md report that is ready-to-use and deal-focused.
+You are the full prospect audit engine for `/sales prospect <url> --proposition=<slug>`. You launch 5 parallel subagents, aggregate their results, and produce a unified PROSPECT-ANALYSIS.md report that is ready-to-use and deal-focused.
+
+## Phase 0: Load Seller Context
+
+**Requires `.sales/` (project-local seller config).** If missing, error: `"No seller config found. Run /sales init to set one up."`
+
+**Requires `--proposition=<slug>` argument.** If missing, list available propositions from `.sales/propositions/*.md` and error: `"Which proposition? Available: <slug list>. Re-run with --proposition=<slug>."` If slug unknown, error: `"Proposition '<slug>' not found in .sales/propositions/. Available: <slug list>."`
+
+**Files to load (all six base files plus the selected proposition):**
+- `.sales/identity.md`
+- `.sales/icp.md`
+- `.sales/pricing.md`
+- `.sales/case-studies.md`
+- `.sales/competitive.md`
+- `.sales/objections.md`
+- `.sales/propositions/<slug>.md`
+
+**Pass the loaded seller context to every subagent in the discovery briefing.** Subagents do not re-read these files themselves — they receive the context inline. See `agents/` for the consumption contract.
+
+**Briefing structure.** When dispatching each of the 5 subagents, include in the briefing:
+
+1. The prospect URL and any pre-fetched page content
+2. A `<seller_context>` block containing the full content of each file loaded in Phase 0 (relevant to that subagent — see per-agent map below)
+3. The proposition slug and a one-paragraph summary
+
+Per-agent context map:
+- sales-company → ICP (for fit scoring)
+- sales-contacts → identity.md (sender match), proposition (target persona)
+- sales-opportunity → ICP (scoring rubric), proposition (Ideal Use Cases / Anti-Fit Signals)
+- sales-competitive → competitive.md, proposition (Differentiators)
+- sales-strategy → identity (voice/tone), proposition, case-studies, objections, competitive
+
+The final PROSPECT-ANALYSIS.md aggregates all five subagent outputs and uses the weights from `.sales/icp.md`'s scoring rubric to compute the composite Prospect Score.
+
+Every generated `PROSPECT-ANALYSIS.md` file starts with this header block:
+
+    Seller: <identity.company>
+    Proposition: <slug> — <name>
+    ICP: .sales/icp.md
+    Generated: <date>
 
 ## When This Skill Is Invoked
 
-The user runs `/sales prospect <url>`. This is the flagship command of the entire suite. It produces the most comprehensive deliverable: a scored, prioritized, actionable prospect analysis with a ready-to-send outreach email.
+The user runs `/sales prospect <url> --proposition=<slug>`. This is the flagship command of the entire suite. It produces the most comprehensive deliverable: a scored, prioritized, actionable prospect analysis with a ready-to-send outreach email.
 
 ---
 
