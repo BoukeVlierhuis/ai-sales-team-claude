@@ -1,7 +1,7 @@
 #!/bin/bash
 # ============================================================================
 # AI Sales Team — Claude Code Skills Installer
-# 15 Skills · 5 Agents · 4 Scripts · PDF
+# 16 Skills · 5 Agents · 4 Scripts · PDF
 # ============================================================================
 set -e
 
@@ -17,7 +17,7 @@ echo ""
 echo -e "${BLUE}╔══════════════════════════════════════════════════════════════╗${NC}"
 echo -e "${BLUE}║                                                              ║${NC}"
 echo -e "${BLUE}║${NC}   ${CYAN}AI Sales Team — Claude Code Skills${NC}                        ${BLUE}║${NC}"
-echo -e "${BLUE}║${NC}   ${GREEN}15 Skills · 5 Agents · 4 Scripts · PDF${NC}                    ${BLUE}║${NC}"
+echo -e "${BLUE}║${NC}   ${GREEN}16 Skills · 5 Agents · 4 Scripts · PDF${NC}                    ${BLUE}║${NC}"
 echo -e "${BLUE}║                                                              ║${NC}"
 echo -e "${BLUE}╚══════════════════════════════════════════════════════════════╝${NC}"
 echo ""
@@ -101,6 +101,7 @@ SKILLS=(
     sales-research
     sales-qualify
     sales-contacts
+    sales-contacts-batch
     sales-outreach
     sales-followup
     sales-prep

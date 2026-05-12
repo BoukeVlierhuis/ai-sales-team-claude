@@ -16,6 +16,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 
 SKILL_CONTRACT: dict[str, list[str]] = {
     "skills/sales-contacts/SKILL.md": ["identity.md", "propositions/<slug>.md"],
+    "skills/sales-contacts-batch/SKILL.md": ["identity.md", "propositions/<slug>.md"],
     "skills/sales-qualify/SKILL.md": ["icp.md", "propositions/<slug>.md"],
     "skills/sales-outreach/SKILL.md": [
         "identity.md",
