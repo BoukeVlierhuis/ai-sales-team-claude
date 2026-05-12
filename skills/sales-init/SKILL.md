@@ -301,7 +301,29 @@ After writing, confirm: "Wrote `.sales/competitive.md`. Regenerate with `/sales 
 
 ## Objections Section
 
-`(filled in by Task 12)`
+Write `./.sales/objections.md`. Required H2 section: `## Top Objections`. List 5–10 objections.
+
+For each objection, ask:
+
+1. **Objection** — "What does the prospect say, verbatim?"
+2. **Underlying concern** — "What is the real concern behind that wording?"
+3. **Response** — "What is the response that has worked? Be specific."
+4. **Evidence** — "What case study, stat, or proof point backs up the response?"
+
+Loop: ask "Add another objection? (Y/N)". Stop at N or after 10.
+
+Write the file using this structure:
+
+    # Objection Playbook
+
+    ## Top Objections
+
+    ### "<objection verbatim>"
+    **Underlying concern:** <concern>
+    **Response:** <response>
+    **Evidence:** <evidence>
+
+After writing, confirm: "Wrote `.sales/objections.md`. Regenerate with `/sales init objections`."
 
 ## Web Seeding (`--from-url`)
 
