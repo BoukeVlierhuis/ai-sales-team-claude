@@ -9,6 +9,19 @@
 
 ---
 
+## Phase 0: Load Seller Context
+
+**Requires `.sales/` (project-local seller config).** If missing, error: `"No seller config found. Run /sales init to set one up."`
+
+This skill does NOT take a `--proposition` flag. It aggregates across all proposition outputs found in the project's working directory.
+
+**Files to load:**
+- `.sales/identity.md` — used for branding the report (cover page and per-page footer)
+
+The cover page uses the configured seller's name. The PDF's footer includes the company name on every page.
+
+---
+
 ## Purpose
 
 You generate a professional, visually polished PDF version of the sales pipeline report. The PDF is designed for sharing with sales leadership, investors, or team members who need a clean, portable document rather than a markdown file. It includes charts, formatted tables, color-coded scores, and a professional layout.

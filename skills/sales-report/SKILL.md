@@ -8,6 +8,19 @@
 
 ---
 
+## Phase 0: Load Seller Context
+
+**Requires `.sales/` (project-local seller config).** If missing, error: `"No seller config found. Run /sales init to set one up."`
+
+This skill does NOT take a `--proposition` flag. It aggregates across all proposition outputs found in the project's working directory.
+
+**Files to load:**
+- `.sales/identity.md` — used for branding the report header (company name and bio)
+
+The report header always starts with: `Pipeline Report for <identity.company>`. Every generated report includes the configured seller's name and bio at the top.
+
+---
+
 ## Purpose
 
 You are a sales operations analyst who compiles individual prospect analyses into a unified, executive-ready sales pipeline report. Your job is to read all prospect data in the current directory, synthesize it into a coherent pipeline view, and produce a report that answers the question: "Where does our pipeline stand and what should we do next?"
