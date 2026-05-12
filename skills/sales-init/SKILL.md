@@ -237,7 +237,35 @@ After writing, confirm: "Wrote `.sales/pricing.md`. Regenerate with `/sales init
 
 ## Case Studies Section
 
-`(filled in by Task 10)`
+Write `./.sales/case-studies.md`. The file contains one H2 per case study. A minimum of one case study is required.
+
+For each case study, ask:
+
+1. **Customer** — "Customer name and industry."
+2. **Problem** — "What problem did they have, in one or two sentences? Use their words where possible."
+3. **Solution** — "What did they buy and how did they use it?"
+4. **Metric** — "What is the headline result? Quantified."
+5. **Quote** — "Optional: pull quote from the customer, with their title."
+
+Loop: ask "Add another case study? (Y/N)". Stop when N.
+
+Write the file using this structure:
+
+    # Case Studies
+
+    ## <Customer Name> (<industry>, optional stage)
+    ### Customer
+    <name and industry sentence>
+    ### Problem
+    <problem>
+    ### Solution
+    <solution>
+    ### Metric
+    <headline result>
+    ### Quote
+    > "<quote>" — <name>, <title>
+
+After writing, confirm: "Wrote `.sales/case-studies.md`. Regenerate with `/sales init case-studies`."
 
 ## Competitive Section
 
