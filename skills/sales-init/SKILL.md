@@ -138,7 +138,65 @@ After writing, confirm: "Wrote `.sales/icp.md`. Regenerate with `/sales init icp
 
 ## Proposition Section
 
-`(filled in by Task 8)`
+Write `./.sales/propositions/<slug>.md`. Loop this section during full setup until the user declines to add another proposition. A minimum of one proposition is required to complete full setup.
+
+**For each proposition, ask in order:**
+
+1. **Slug** — "Short kebab-case identifier (e.g., `onboarding-suite`). This becomes the filename and the `--proposition=<slug>` argument."
+2. **Name** — "Human-readable product name."
+3. **Value Prop** — "One sentence: what value is delivered, to whom, with what measurable outcome."
+4. **Target Persona** — "Who inside the ICP buys this specifically?"
+5. **Key Features** — "List the 4–8 most important features."
+6. **Differentiators** — "Why does this beat the alternatives the buyer would compare it against?"
+7. **Ideal Use Cases** — "When should a salesperson lead with this proposition?"
+8. **Pricing Tier Reference** — "Which tier in `pricing.md` does this typically map to?"
+9. **Success Metrics** — "What outcomes do successful customers measure?"
+10. **Anti-Fit Signals** — "When should a salesperson NOT lead with this proposition?"
+
+Before writing, check whether `./.sales/propositions/<slug>.md` already exists. If it does, ask: "Replace existing proposition '<slug>'? (Y/N)".
+
+Write the file using this exact structure:
+
+    # <Name>
+
+    ## Name
+    <Name>
+
+    ## Slug
+    <slug>
+
+    ## Value Prop
+    <one sentence>
+
+    ## Target Persona
+    <description>
+
+    ## Key Features
+    - <feature>
+    - <feature>
+
+    ## Differentiators
+    - <differentiator>
+    - <differentiator>
+
+    ## Ideal Use Cases
+    - <use case>
+    - <use case>
+
+    ## Pricing Tier Reference
+    <Tier name(s) from pricing.md>
+
+    ## Success Metrics
+    - <metric>
+    - <metric>
+
+    ## Anti-Fit Signals
+    - <signal>
+    - <signal>
+
+After writing, confirm: "Wrote `.sales/propositions/<slug>.md`. Add more with `/sales init proposition <new-slug>`."
+
+In full-setup mode, after writing one proposition ask: "Add another proposition? (Y/N)". Loop until N.
 
 ## Pricing Section
 
