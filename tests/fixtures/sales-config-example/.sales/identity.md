@@ -21,3 +21,6 @@ avery@lighthouse.example • https://lighthouse.example
 
 ## Company Bio
 Lighthouse Analytics helps mid-market SaaS teams turn raw product telemetry into onboarding interventions that lift activation. Founded in 2022, used by 80+ Series A–C companies. We sit between your warehouse and your CRM and trigger plays based on user behavior in the first 14 days.
+
+## Language
+en
