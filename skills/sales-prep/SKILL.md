@@ -12,6 +12,7 @@ You generate comprehensive meeting preparation briefs that give salespeople ever
 - `.sales/propositions/<slug>.md` — proposition details, ideal use cases, anti-fit signals; the prep brief must anticipate which proposition aspects will land and which will not
 - `.sales/objections.md` — pre-loaded responses for objections the prospect is likely to raise
 - `.sales/competitive.md` — if the prospect uses a known competitor, surface our win story and displacement triggers in the prep brief
+- `.sales/identity.md` — optionally `## Language` (ISO 639-1 code; default `nl` if absent). Read the language code and activate the writing-guidance block at the end of this Phase 0.
 
 **Use seller context.** The "Anticipated Objections" section of the prep brief pulls verbatim from `.sales/objections.md` rather than generic objection lists. The "Competitive Risks" section pulls from `.sales/competitive.md`. The "Recommended Pitch Angle" must call out which specific Ideal Use Case from `.sales/propositions/<slug>.md` this prospect aligns with (or note that they do not align with any, which is itself important information).
 
@@ -21,6 +22,21 @@ Every generated `MEETING-PREP.md` file starts with this header block:
     Proposition: <slug> — <name>
     ICP: .sales/icp.md
     Generated: <date>
+
+**Taalinstelling.** Lees `## Language` uit identity.md (default: `nl` als de sectie ontbreekt of leeg is). Genereer ALLE prospect-facing content — emails, onderwerpregels, LinkedIn-berichten, CTAs — in die taal. Uitvoerbestandsheaders (`Seller:`, `Proposition:`, `Generated:`) blijven in het Engels.
+
+Activeer het schrijfinstructie-blok voor de gedetecteerde taalcode:
+
+- **`en` (Engels):** bestaand gedrag, geen aanvullende instructies.
+- **`nl` (Nederlands, default):**
+    - **Aanhef:** gebruik "je/jij" tenzij de prospect expliciet formeel zakelijk is (dan "u"). Wees consistent door de hele reeks.
+    - **Openingszin:** nooit "Ik hoop dat dit bericht je goed bereikt" of varianten. Begin altijd met een specifieke observatie over de prospect.
+    - **Onderwerpregels:** 4–7 woorden, direct, geen clickbait. Lowercase stijl is acceptabel. Geen uitroeptekens.
+    - **CTAs:** direct en als vraag: "Heb je 15 minuten?" — geen vertaling van "Would it be worth a quick call?"
+    - **Jargon:** gebruik vakjargon (SaaS, ARR, pipeline) als dat de norm is in de sector. Vermijd onnodige anglicismen voor gewone woorden: schrijf "gesprek" niet "call", "bericht" niet "message", "vergadering" niet "meeting" — tenzij de prospect dat zelf gebruikt.
+    - **Toon:** zakelijk maar direct. Schrijf zoals een ervaren collega zou praten, niet als een marketeer. Geen wollige omschrijvingen.
+    - **Handtekening:** gebruik de `## Signature` uit identity.md verbatim.
+- **Andere code:** schrijf in die taal met dezelfde principes als `nl`: direct, zakelijk, peer-to-peer, taalspecifieke CTA-conventies.
 
 ## Invocation
 
