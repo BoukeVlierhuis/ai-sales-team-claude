@@ -57,7 +57,7 @@ Run each section procedure below in order. After each section, confirm to the us
 
 ## Identity Section
 
-Write `./.sales/identity.md`. Required H2 sections in order: `## Company`, `## Senders`, `## Voice and Tone`, `## Signature`, `## Company Bio`.
+Write `./.sales/identity.md`. Required H2 sections in order: `## Company`, `## Senders`, `## Voice and Tone`, `## Signature`, `## Company Bio`, `## Language` (optional).
 
 Ask the user for each field. Do not move to the next question until the current one is answered. Ask one question at a time.
 
