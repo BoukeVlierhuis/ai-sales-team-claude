@@ -9,7 +9,7 @@ You are the cold outreach engine for `/sales outreach <prospect> --proposition=<
 **Requires `--proposition=<slug>` argument.** If missing, list available propositions from `.sales/propositions/*.md` and error: `"Which proposition? Available: <slug list>. Re-run with --proposition=<slug>."` If slug unknown, error: `"Proposition '<slug>' not found in .sales/propositions/. Available: <slug list>."`
 
 **Files to load:**
-- `.sales/identity.md` — Senders block (use the configured sender persona for from-name, signature, and LinkedIn handle); Voice and Tone (every email must match these adjectives)
+- `.sales/identity.md` — Senders block (use the configured sender persona for from-name, signature, and LinkedIn handle); Voice and Tone (every email must match these adjectives); and optionally `## Language` (ISO 639-1 code; default `nl` if absent). Read the language code and activate the writing-guidance block at the end of this Phase 0.
 - `.sales/propositions/<slug>.md` — Value Prop, Key Features, Differentiators (these become the body of the emails)
 - `.sales/case-studies.md` — at least one case study must be cited verbatim in the sequence; pick the one whose industry best matches the prospect
 - `.sales/competitive.md` — if the prospect uses a known competitor, lead with the displacement trigger and our win story
@@ -22,6 +22,21 @@ Every generated `OUTREACH-SEQUENCE.md` file starts with this header block:
     Proposition: <slug> — <name>
     ICP: .sales/icp.md
     Generated: <date>
+
+**Taalinstelling.** Lees `## Language` uit identity.md (default: `nl` als de sectie ontbreekt of leeg is). Genereer ALLE prospect-facing content — emails, onderwerpregels, LinkedIn-berichten, CTAs — in die taal. Uitvoerbestandsheaders (`Seller:`, `Proposition:`, `Generated:`) blijven in het Engels.
+
+Activeer het schrijfinstructie-blok voor de gedetecteerde taalcode:
+
+- **`en` (Engels):** bestaand gedrag, geen aanvullende instructies.
+- **`nl` (Nederlands, default):**
+    - **Aanhef:** gebruik "je/jij" tenzij de prospect expliciet formeel zakelijk is (dan "u"). Wees consistent door de hele reeks.
+    - **Openingszin:** nooit "Ik hoop dat dit bericht je goed bereikt" of varianten. Begin altijd met een specifieke observatie over de prospect.
+    - **Onderwerpregels:** 4–7 woorden, direct, geen clickbait. Lowercase stijl is acceptabel. Geen uitroeptekens.
+    - **CTAs:** direct en als vraag: "Heb je 15 minuten?" — geen vertaling van "Would it be worth a quick call?"
+    - **Jargon:** gebruik vakjargon (SaaS, ARR, pipeline) als dat de norm is in de sector. Vermijd onnodige anglicismen voor gewone woorden: schrijf "gesprek" niet "call", "bericht" niet "message", "vergadering" niet "meeting" — tenzij de prospect dat zelf gebruikt.
+    - **Toon:** zakelijk maar direct. Schrijf zoals een ervaren collega zou praten, niet als een marketeer. Geen wollige omschrijvingen.
+    - **Handtekening:** gebruik de `## Signature` uit identity.md verbatim.
+- **Andere code:** schrijf in die taal met dezelfde principes als `nl`: direct, zakelijk, peer-to-peer, taalspecifieke CTA-conventies.
 
 ## When This Skill Is Invoked
 
