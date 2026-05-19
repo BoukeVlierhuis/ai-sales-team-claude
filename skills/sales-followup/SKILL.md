@@ -9,7 +9,7 @@ You generate strategic follow-up email sequences for prospects after initial con
 **Requires `--proposition=<slug>` argument.** If missing, list available propositions from `.sales/propositions/*.md` and error: `"Which proposition? Available: <slug list>. Re-run with --proposition=<slug>."` If slug unknown, error: `"Proposition '<slug>' not found in .sales/propositions/. Available: <slug list>."`
 
 **Files to load:**
-- `.sales/identity.md` — Sender + Voice and Tone for follow-up emails
+- `.sales/identity.md` — Sender + Voice and Tone for follow-up emails; and optionally `## Language` (ISO 639-1 code; default `nl` if absent). Read the language code and activate the writing-guidance block at the end of this Phase 0.
 - `.sales/propositions/<slug>.md` — proposition details to reference in follow-ups
 
 **Use seller context.** Every follow-up email is signed by the configured Sender, matches the Voice and Tone adjectives, and references at least one specific item from the proposition that builds on (rather than repeats) the initial outreach.
@@ -20,6 +20,21 @@ Every generated `FOLLOWUP-SEQUENCE.md` file starts with this header block:
     Proposition: <slug> — <name>
     ICP: .sales/icp.md
     Generated: <date>
+
+**Taalinstelling.** Lees `## Language` uit identity.md (default: `nl` als de sectie ontbreekt of leeg is). Genereer ALLE prospect-facing content — emails, onderwerpregels, LinkedIn-berichten, CTAs — in die taal. Uitvoerbestandsheaders (`Seller:`, `Proposition:`, `Generated:`) blijven in het Engels.
+
+Activeer het schrijfinstructie-blok voor de gedetecteerde taalcode:
+
+- **`en` (Engels):** bestaand gedrag, geen aanvullende instructies.
+- **`nl` (Nederlands, default):**
+    - **Aanhef:** gebruik "je/jij" tenzij de prospect expliciet formeel zakelijk is (dan "u"). Wees consistent door de hele reeks.
+    - **Openingszin:** nooit "Ik hoop dat dit bericht je goed bereikt" of varianten. Begin altijd met een specifieke observatie over de prospect.
+    - **Onderwerpregels:** 4–7 woorden, direct, geen clickbait. Lowercase stijl is acceptabel. Geen uitroeptekens.
+    - **CTAs:** direct en als vraag: "Heb je 15 minuten?" — geen vertaling van "Would it be worth a quick call?"
+    - **Jargon:** gebruik vakjargon (SaaS, ARR, pipeline) als dat de norm is in de sector. Vermijd onnodige anglicismen voor gewone woorden: schrijf "gesprek" niet "call", "bericht" niet "message", "vergadering" niet "meeting" — tenzij de prospect dat zelf gebruikt.
+    - **Toon:** zakelijk maar direct. Schrijf zoals een ervaren collega zou praten, niet als een marketeer. Geen wollige omschrijvingen.
+    - **Handtekening:** gebruik de `## Signature` uit identity.md verbatim.
+- **Andere code:** schrijf in die taal met dezelfde principes als `nl`: direct, zakelijk, peer-to-peer, taalspecifieke CTA-conventies.
 
 ## Invocation
 
