@@ -66,8 +66,9 @@ Ask the user for each field. Do not move to the next question until the current 
 3. **Voice and Tone** — "Pick three adjectives that describe how you want sales communication to sound (e.g., 'direct, technical, warm'). Then add one or two sentences explaining what good sounds like."
 4. **Signature** — "Paste the verbatim email signature block you want appended to outreach."
 5. **Company Bio** — "Write one paragraph about the company for use in proposals and outreach context. Skip jargon — facts and outcomes only."
+6. **Language** — "In welke taal wil je outreach genereren? Voer een ISO 639-1 code in (`nl` voor Nederlands, `en` voor Engels). Druk Enter voor de default (`nl`)." If the user presses Enter or leaves the field blank, use `nl`.
 
-When all five are collected, write the file using this exact structure:
+When all six fields are collected, write the file using this exact structure:
 
     # Identity
 
@@ -90,6 +91,9 @@ When all five are collected, write the file using this exact structure:
 
     ## Company Bio
     <one paragraph>
+
+    ## Language
+    <ISO 639-1 code, e.g. nl or en>
 
 After writing, confirm: "Wrote `.sales/identity.md`. Regenerate with `/sales init identity`."
 
