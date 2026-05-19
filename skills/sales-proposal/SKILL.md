@@ -12,7 +12,7 @@ You generate professional, client-ready sales proposals that persuade, different
 - `.sales/propositions/<slug>.md` — proposition Name, Value Prop, Key Features, Differentiators, Success Metrics. The proposal's "Solution" and "Why Us" sections are built directly from these.
 - `.sales/pricing.md` — Tiers and Discount Rules. The proposal's "Investment" section uses the tier referenced by the proposition.
 - `.sales/case-studies.md` — Select 1–2 case studies whose industry/stage most closely match the client; embed them in the proposal.
-- `.sales/identity.md` — Company Bio for the "About Us" section; Sender persona for the cover page.
+- `.sales/identity.md` — Company Bio for the "About Us" section; Sender persona for the cover page; and optionally `## Language` (ISO 639-1 code; default `nl` if absent). Read the language code and activate the writing-guidance block at the end of this Phase 0.
 
 **Use seller context.** No section of the proposal may contain a placeholder ("Your Company") or a generic value claim. Pull the proposition's exact wording for Value Prop and Differentiators; pull the matching tier verbatim from `.sales/pricing.md`; embed at least one named case study with its quantified result. The cover page lists the configured Sender as the proposal author.
 
@@ -22,6 +22,21 @@ Every generated `CLIENT-PROPOSAL.md` file starts with this header block:
     Proposition: <slug> — <name>
     ICP: .sales/icp.md
     Generated: <date>
+
+**Taalinstelling.** Lees `## Language` uit identity.md (default: `nl` als de sectie ontbreekt of leeg is). Genereer ALLE prospect-facing content — emails, onderwerpregels, LinkedIn-berichten, CTAs — in die taal. Uitvoerbestandsheaders (`Seller:`, `Proposition:`, `Generated:`) blijven in het Engels.
+
+Activeer het schrijfinstructie-blok voor de gedetecteerde taalcode:
+
+- **`en` (Engels):** bestaand gedrag, geen aanvullende instructies.
+- **`nl` (Nederlands, default):**
+    - **Aanhef:** gebruik "je/jij" tenzij de prospect expliciet formeel zakelijk is (dan "u"). Wees consistent door de hele reeks.
+    - **Openingszin:** nooit "Ik hoop dat dit bericht je goed bereikt" of varianten. Begin altijd met een specifieke observatie over de prospect.
+    - **Onderwerpregels:** 4–7 woorden, direct, geen clickbait. Lowercase stijl is acceptabel. Geen uitroeptekens.
+    - **CTAs:** direct en als vraag: "Heb je 15 minuten?" — geen vertaling van "Would it be worth a quick call?"
+    - **Jargon:** gebruik vakjargon (SaaS, ARR, pipeline) als dat de norm is in de sector. Vermijd onnodige anglicismen voor gewone woorden: schrijf "gesprek" niet "call", "bericht" niet "message", "vergadering" niet "meeting" — tenzij de prospect dat zelf gebruikt.
+    - **Toon:** zakelijk maar direct. Schrijf zoals een ervaren collega zou praten, niet als een marketeer. Geen wollige omschrijvingen.
+    - **Handtekening:** gebruik de `## Signature` uit identity.md verbatim.
+- **Andere code:** schrijf in die taal met dezelfde principes als `nl`: direct, zakelijk, peer-to-peer, taalspecifieke CTA-conventies.
 
 ## Invocation
 
