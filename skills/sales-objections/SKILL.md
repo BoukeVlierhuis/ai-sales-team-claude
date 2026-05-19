@@ -12,6 +12,7 @@ You generate comprehensive objection response scripts that salespeople can use i
 - `.sales/objections.md` — seed objection list; the playbook generated for the prospect must build ON this list, not duplicate it
 - `.sales/competitive.md` — competitive context for any "Why not <competitor>?" objections
 - `.sales/propositions/<slug>.md` — Anti-Fit Signals; if any signal applies to the prospect, surface it as a likely objection
+- `.sales/identity.md` — optionally `## Language` (ISO 639-1 code; default `nl` if absent). Read the language code and activate the writing-guidance block at the end of this Phase 0.
 
 **Use seller context.** When generating the prospect-specific objection playbook, prepend the pre-validated responses from `.sales/objections.md` (they have proven evidence behind them). Only add new objections that are specific to this prospect's situation and that are not already covered by the seller's standing list.
 
@@ -21,6 +22,21 @@ Every generated `OBJECTION-PLAYBOOK.md` file starts with this header block:
     Proposition: <slug> — <name>
     ICP: .sales/icp.md
     Generated: <date>
+
+**Taalinstelling.** Lees `## Language` uit identity.md (default: `nl` als de sectie ontbreekt of leeg is). Genereer ALLE prospect-facing content — emails, onderwerpregels, LinkedIn-berichten, CTAs — in die taal. Uitvoerbestandsheaders (`Seller:`, `Proposition:`, `Generated:`) blijven in het Engels.
+
+Activeer het schrijfinstructie-blok voor de gedetecteerde taalcode:
+
+- **`en` (Engels):** bestaand gedrag, geen aanvullende instructies.
+- **`nl` (Nederlands, default):**
+    - **Aanhef:** gebruik "je/jij" tenzij de prospect expliciet formeel zakelijk is (dan "u"). Wees consistent door de hele reeks.
+    - **Openingszin:** nooit "Ik hoop dat dit bericht je goed bereikt" of varianten. Begin altijd met een specifieke observatie over de prospect.
+    - **Onderwerpregels:** 4–7 woorden, direct, geen clickbait. Lowercase stijl is acceptabel. Geen uitroeptekens.
+    - **CTAs:** direct en als vraag: "Heb je 15 minuten?" — geen vertaling van "Would it be worth a quick call?"
+    - **Jargon:** gebruik vakjargon (SaaS, ARR, pipeline) als dat de norm is in de sector. Vermijd onnodige anglicismen voor gewone woorden: schrijf "gesprek" niet "call", "bericht" niet "message", "vergadering" niet "meeting" — tenzij de prospect dat zelf gebruikt.
+    - **Toon:** zakelijk maar direct. Schrijf zoals een ervaren collega zou praten, niet als een marketeer. Geen wollige omschrijvingen.
+    - **Handtekening:** gebruik de `## Signature` uit identity.md verbatim.
+- **Andere code:** schrijf in die taal met dezelfde principes als `nl`: direct, zakelijk, peer-to-peer, taalspecifieke CTA-conventies.
 
 ## Invocation
 
